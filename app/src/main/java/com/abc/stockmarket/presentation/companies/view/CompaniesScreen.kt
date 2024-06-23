@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.abc.stockmarket.R
+import com.abc.stockmarket.presentation.common.navigation.Routes
 import com.abc.stockmarket.presentation.companies.event.CompaniesEvent
 import com.abc.stockmarket.presentation.companies.state.CompaniesState
 import com.abc.stockmarket.presentation.companies.viewModel.CompaniesViewModel
@@ -46,7 +47,7 @@ fun CompaniesScreen(
 
     //region collect flows
     viewModel.navigateToCompanyInfo.collectAsEffect {
-        navController.navigate(CompanyInfoScreen(it))
+        navController.navigate(Routes.CompanyInfoScreen(it))
     }
 
     viewModel.error.collectAsEffect {
@@ -132,6 +133,3 @@ fun CompaniesPreview(modifier: Modifier = Modifier) {
         onEvent = {}
     )
 }
-
-@Serializable
-object CompaniesScreen

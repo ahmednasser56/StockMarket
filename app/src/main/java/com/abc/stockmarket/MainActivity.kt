@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.abc.stockmarket.domain.model.CompanyListing
+import com.abc.stockmarket.presentation.common.navigation.Routes
 import com.abc.stockmarket.presentation.companies.view.CompaniesScreen
 import com.abc.stockmarket.presentation.companyInfo.view.CompanyInfoScreen
 import com.abc.stockmarket.ui.theme.StockMarketTheme
@@ -30,11 +31,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             StockMarketTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = CompaniesScreen) {
-                    composable<CompaniesScreen> {
+                NavHost(navController = navController, startDestination = Routes.CompaniesScreen) {
+                    composable<Routes.CompaniesScreen> {
                         CompaniesScreen(navController)
                     }
-                    composable<CompanyInfoScreen>(
+                    composable<Routes.CompanyInfoScreen>(
                         typeMap = mapOf(
                             typeOf<CompanyListing>() to CustomNavType(
                                 CompanyListing::class.java,

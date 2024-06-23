@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.abc.stockmarket.domain.model.CompanyInfo
 import com.abc.stockmarket.domain.repository.StockRepository
+import com.abc.stockmarket.presentation.common.navigation.Routes
 import com.abc.stockmarket.presentation.companyInfo.event.CompanyInfoEvent
 import com.abc.stockmarket.presentation.companyInfo.state.CompanyInfoState
 import com.abc.stockmarket.presentation.companyInfo.view.CompanyInfoScreen
@@ -25,7 +26,7 @@ class CompanyInfoViewModel @Inject constructor(
     private val companiesRepository: StockRepository
 ) : ViewModel() {
 
-    private val _company = savedStateHandle.toRoute<CompanyInfoScreen>().company
+    private val _company = savedStateHandle.toRoute<Routes.CompanyInfoScreen>().company
 
     private val _error = MutableSharedFlow<String>()
     val error = _error.asSharedFlow()
@@ -33,7 +34,6 @@ class CompanyInfoViewModel @Inject constructor(
     var state by mutableStateOf(CompanyInfoState())
 
     init {
-        state = state.copy(company = _company)
         getCompanyInfo()
     }
 
